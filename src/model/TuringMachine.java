@@ -95,7 +95,7 @@ public class TuringMachine {
 			dll.addAfter(letter, C1.getNext());
 			moveC1ToRight();
 		}else {	
-			dll.addAfter(letter, C1.getNext().getPrev());
+			dll.addAfter(letter, C1.getNext());
 			moveC1ToLeft();
 			if( dll.length == 2 )
 				moveC0ToLeft();
