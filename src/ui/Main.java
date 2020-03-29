@@ -43,19 +43,7 @@ public class Main {
 						bw.write( tm.getHeadString(head) + "\n" );	
 					}
 					i+=2;
-				}
-				/*
-				Scanner sc = new Scanner(System.in);
-				String enter = "";
-				while( true ) {
-					String res = String.valueOf(head) + String.valueOf(op) + String.valueOf(letter) + "\n";
-					System.out.println(res);
-					System.out.println(tm);
-					enter = sc.nextLine();
-					if( enter != null )
-						break;
-				}*/
-			
+				}			
 			}
 			tm.reset();
 		}
