@@ -7,7 +7,7 @@ public class DoublyLinkedList2 {
 
     public Node prepend(char data){
         Node n = new Node(data);
-        if(length==0){
+        if(first == null || length==0){
             first = n;
             last = n;
         }else{
@@ -45,7 +45,6 @@ public class DoublyLinkedList2 {
         length++;
         return n;
     }
-
     
 //    Node after which new node to be added cannot be null
     public Node addAfter(char data, Node prevNode){

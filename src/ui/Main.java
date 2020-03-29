@@ -12,14 +12,14 @@ import model.TuringMachine;
 
 public class Main {
 
-	public static String INPUT_PATH = "data/in_turing.txt";
+	public static String INPUT_PATH = "/home/sebastian/Downloads/in_turing.txt";
 	public static String OUTPUT_PATH = "data/ans_turing.txt";
 	
 	public String INPUT_DEBUG_MODE_PATH = "data/in_debug.txt";
 	public String OUTPUT_DEBUG_MODE_PATH = "data/out_debug.txt";
 	public String LOGS_DEBUG_MODE_PATH = "data/logs_debug.txt";
 
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) throws IOException {
 		TuringMachine tm = new TuringMachine();
 		BufferedReader br = new BufferedReader( new FileReader( new File( INPUT_PATH )));
 		BufferedWriter bw = new BufferedWriter(new FileWriter(new File( OUTPUT_PATH )));
@@ -40,16 +40,26 @@ public class Main {
 					if( op == '2' ) {
 						tm.delete(head);
 					}else {
-						String sep = "\n";
-						bw.write( tm.getHeadString(head) + sep);	
-					}	
+						bw.write( tm.getHeadString(head) + "\n" );	
+					}
 					i+=2;
-				}				
-			tm.reset();
+				}
+				/*
+				Scanner sc = new Scanner(System.in);
+				String enter = "";
+				while( true ) {
+					String res = String.valueOf(head) + String.valueOf(op) + String.valueOf(letter) + "\n";
+					System.out.println(res);
+					System.out.println(tm);
+					enter = sc.nextLine();
+					if( enter != null )
+						break;
+				}*/
+			
 			}
+			tm.reset();
 		}
 		long end = System.currentTimeMillis();
-		System.out.print("ms: ");
 		System.out.println(end - start);
 		bw.close();
 		br.close();

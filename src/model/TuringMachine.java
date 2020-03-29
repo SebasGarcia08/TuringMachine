@@ -91,15 +91,32 @@ public class TuringMachine {
 	}
 	
 	public void addC1(char letter) {
+		if( dll.length == 1 ) {
+			dll.prepend(letter);
+			moveC1ToLeft();
+			C0.setNext(C0.getNext().getPrev());
+		}else if( dll.length == 2) {
+			dll.addAfter(letter, C1.getNext());
+			moveC1ToRight();
+		} else {
+			if( dll.length % 2 != 0 ) {
+				dll.addAfter(letter, C1.getNext());
+			} else {
+				dll.addAfter(letter, C1.getNext());
+				moveC1ToRight();
+			}
+		}
+		/*
 		if( dll.length % 2 == 0 ) {
 			dll.addAfter(letter, C1.getNext());
 			moveC1ToRight();
 		}else {	
-			dll.addAfter(letter, C1.getNext());
+			dll.addBefore(letter, C1.getNext());
 			moveC1ToLeft();
-			if( dll.length == 2 )
+			if( dll.length == 2 ) {
 				moveC0ToLeft();
-		}
+			}
+		}*/
 	}
 	
 	public void addC2(char letter) {
@@ -116,7 +133,7 @@ public class TuringMachine {
 	
 	public void moveC0ToLeft() {
 		if(C0 != dll.getFirst())
-			C0.setNext( dll.getFirst() );
+			C0.setNext( C0.getNext().getPrev() );
 	}
 	
 	public void moveC2ToLeft() {
