@@ -7,8 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class TextFileCompareBeta {
-	public static final String TEXT_ONE_PATH = "data/binarySearchQueriesOutputV1.txt";
-	public static final String TEXT_ANOTHER_PATH = "data/binarySearchQueriesOutputV1_MyOutput.txt";
+	public static final String TEXT_ONE_PATH = "/home/sebastian/Downloads/out_turing.txt";
+	public static final String TEXT_ANOTHER_PATH = "data/ans_turing.txt";
 	public static final String DIFFERENCES_DETAIL_PATH = "data/DETAIL_OUTPUT_COMPARISON.txt";
 
 	public static void main(String[] args) throws IOException {

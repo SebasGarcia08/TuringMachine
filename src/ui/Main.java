@@ -3,35 +3,28 @@ package ui;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
+
 import model.TuringMachine;
 
 public class Main {
 
-	public String INPUT_PATH = "data/inputs.txt";
-	public String OUTPUT_PATH = "data/outputs.txt";
+	public static String INPUT_PATH = "data/in_turing.txt";
+	public static String OUTPUT_PATH = "data/ans_turing.txt";
 	
 	public String INPUT_DEBUG_MODE_PATH = "data/in_debug.txt";
 	public String OUTPUT_DEBUG_MODE_PATH = "data/out_debug.txt";
 	public String LOGS_DEBUG_MODE_PATH = "data/logs_debug.txt";
 
-	private TuringMachine tm;
-
-	public Main() {
-		
-	}
-	
-	public static void main(String[] args) {
-		
-	}
-	
-	public void run() throws IOException {
+	public static void main(String[] args) throws IOException{
+		TuringMachine tm = new TuringMachine();
 		BufferedReader br = new BufferedReader( new FileReader( new File( INPUT_PATH )));
 		BufferedWriter bw = new BufferedWriter(new FileWriter(new File( OUTPUT_PATH )));
 		String line;
+		long start = System.currentTimeMillis();
 		while((line = br.readLine()) != null) {
 			final String chars = line;
 			int i = 0;
@@ -47,18 +40,23 @@ public class Main {
 					if( op == '2' ) {
 						tm.delete(head);
 					}else {
-//						bw.write( heads.get(head).getNext() + "\n" );	
-					}
+						String sep = "\n";
+						bw.write( tm.getHeadString(head) + sep);	
+					}	
 					i+=2;
-				}
-			}
+				}				
 			tm.reset();
+			}
 		}
+		long end = System.currentTimeMillis();
+		System.out.print("ms: ");
+		System.out.println(end - start);
 		bw.close();
 		br.close();
 	}
 	
-	public void readDebug( String input_path, String output_path,  int debug_mode) throws IOException {
+	public void readDebug( String input_path, String output_path, int debug_mode) throws IOException {
+		TuringMachine tm = new TuringMachine();
 		BufferedReader br = new BufferedReader( new FileReader( new File( input_path )));
 		BufferedWriter bw = new BufferedWriter(new FileWriter(new File( output_path )));
 		String line;
@@ -79,11 +77,6 @@ public class Main {
 							tm.delete(head);
 						i+=2;
 				} else {
-					if(debug_mode == 1) {
-						//TODO write method
-					} else {
-						//TODO debug mode 2 method pending
-					}
 					i+=2;
 				}
 				String res = String.valueOf(head) + String.valueOf(op) + String.valueOf(letter) + "\n";

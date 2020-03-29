@@ -6,14 +6,14 @@ import org.junit.Test;
 
 public class DoublyLinkedListTest {
 
-	private DoublyLinkedList dll; 
+	private DoublyLinkedList2 dll; 
 	
 	public void emptyListSetup() {
-		dll = new DoublyLinkedList(); 
+		dll = new DoublyLinkedList2(); 
 	}
 	
 	public void nonEmptyListSetup() {
-		dll = new DoublyLinkedList(); 
+		dll = new DoublyLinkedList2(); 
 		dll.append('A');
 		dll.append('B');
 		dll.append('C');
@@ -65,14 +65,15 @@ public class DoublyLinkedListTest {
 		Node C = new Node('C');
 		Node D = new Node('D');
 		dll.append(A); dll.append(B); dll.append(C); dll.append(D); 
-		dll.delete(B); dll.delete(A); dll.delete(D);
+		dll.delete(A); dll.delete(B); 				 dll.delete(D);
 		String expected = "<-C->";
 		String string_msg = "List should be " + expected + "but is " + dll.toString();
-		
 		int expected_length = 1;
-		String length_msg = "Length must be " + expected_length + ", but is" + dll.length;
+		String length_msg = "Length must be " + expected_length + ", but is " + dll.length;
 		assertTrue(string_msg, dll.toString().equals("<-C->"));
 		assertTrue(length_msg, dll.length == expected_length);
+		assertTrue(dll.getLast().equals(C));
+		assertTrue(dll.getFirst().equals(C));
 	}
 	
 	@Test

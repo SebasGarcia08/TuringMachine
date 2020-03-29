@@ -4,6 +4,7 @@ public class Node {
 	private Node next;
 	private Node prev;
 	private char data;
+	
 	public Node(char d){
 		prev = null;
 		next = null;
@@ -45,14 +46,14 @@ public class Node {
 		return data;
 	}
 
+	@Override
+	public String toString() {
+		return Character.toString(data);
+	}
 	/**
 	 * @param data the data to set
 	 */
 	public void setData(char data) {
 		this.data = data;
-	}
-
-	public String toString() {
-		return String.valueOf(data);
 	}
 }
